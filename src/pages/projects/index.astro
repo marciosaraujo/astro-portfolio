@@ -35,29 +35,32 @@ const filters = usedCategories.map((c) => ({ value: c, label: CATEGORY_LABELS[c]
 			.filters {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 0.5em;
+				gap: 0.6em;
 				margin: 1.5em 0;
 			}
 			.filters button {
-				padding: 0.45em 1.1em;
+				padding: 0.45em 1.2em;
 				border: 1px solid var(--border);
-				background: rgba(var(--surface-rgb), 0.5);
+				background: rgba(var(--surface-rgb), 0.45);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
 				border-radius: 999px;
 				cursor: pointer;
-				font-size: 0.9rem;
+				font-size: 0.88rem;
 				font-weight: 500;
 				color: rgb(var(--gray-dark));
-				transition: 0.2s ease;
+				transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 			}
 			.filters button:hover {
-				border-color: rgba(var(--accent-rgb), 0.4);
+				border-color: var(--border-hover);
 				color: rgb(var(--black));
+				transform: translateY(-1px);
 			}
 			.filters button[aria-pressed='true'] {
 				background: var(--accent);
 				border-color: var(--accent);
 				color: var(--on-accent);
-				box-shadow: 0 4px 14px var(--accent-glow);
+				box-shadow: 0 6px 15px rgba(var(--accent-rgb), 0.25);
 			}
 			.grid {
 				display: grid;

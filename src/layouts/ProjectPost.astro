@@ -28,7 +28,8 @@ const { title, description, category, tech, repoUrl, demoUrl, coverImage } = Ast
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
-				border-radius: 12px;
+				border-radius: var(--radius-lg);
+				border: 1px solid var(--border);
 				box-shadow: var(--box-shadow);
 			}
 			.prose {
@@ -41,32 +42,38 @@ const { title, description, category, tech, repoUrl, demoUrl, coverImage } = Ast
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
-				line-height: 1;
+				line-height: 1.15;
 			}
 			.title h1 {
 				margin: 0 0 0.3em 0;
+				font-family: "Outfit", sans-serif;
+				font-weight: 700;
 			}
 			.category {
+				font-family: "JetBrains Mono", monospace;
 				font-size: 0.8rem;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
-				color: rgb(var(--accent));
+				color: var(--accent-dark);
 				font-weight: 600;
+			}
+			:root[data-theme="light"] .category {
+				color: var(--accent);
 			}
 			.links {
 				display: flex;
-				gap: 0.8em;
-				margin: 1em 0;
+				gap: 1em;
+				margin: 1.2em 0;
 				flex-wrap: wrap;
 			}
 			.links a {
 				display: inline-block;
-				padding: 0.55em 1.2em;
-				border-radius: 10px;
+				padding: 0.7em 1.6em;
+				border-radius: var(--radius);
 				text-decoration: none;
 				font-weight: 600;
-				font-size: 0.95rem;
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				font-size: 0.9rem;
+				transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
 			}
 			.links a:hover {
 				transform: translateY(-2px);
@@ -74,12 +81,22 @@ const { title, description, category, tech, repoUrl, demoUrl, coverImage } = Ast
 			.links a.primary {
 				background: var(--accent);
 				color: var(--on-accent);
-				box-shadow: 0 6px 20px var(--accent-glow);
+				box-shadow: 0 6px 18px rgba(var(--accent-rgb), 0.3);
+			}
+			.links a.primary:hover {
+				background-color: var(--accent-dark);
+				box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.45);
 			}
 			.links a.secondary {
 				border: 1px solid var(--border);
-				color: rgb(var(--gray-dark));
-				background: rgba(var(--surface-rgb), 0.5);
+				color: rgb(var(--black));
+				background: rgba(var(--surface-rgb), 0.45);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+			}
+			.links a.secondary:hover {
+				border-color: var(--border-hover);
+				background-color: rgba(var(--surface-rgb), 0.75);
 			}
 			.tech {
 				display: flex;
@@ -89,9 +106,19 @@ const { title, description, category, tech, repoUrl, demoUrl, coverImage } = Ast
 			}
 			.back {
 				display: inline-block;
-				margin-bottom: 1em;
-				color: rgb(var(--gray));
+				margin-bottom: 1.2em;
+				color: var(--accent-dark);
 				text-decoration: none;
+				font-family: "JetBrains Mono", monospace;
+				font-size: 0.88rem;
+				font-weight: 600;
+				transition: opacity 0.2s ease;
+			}
+			:root[data-theme="light"] .back {
+				color: var(--accent);
+			}
+			.back:hover {
+				opacity: 0.8;
 			}
 		</style>
 	</head>
