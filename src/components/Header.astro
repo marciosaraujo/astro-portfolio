@@ -107,6 +107,22 @@ import { SITE_TITLE, SOCIAL } from '../consts';
 		color: var(--accent);
 	}
 	@media (max-width: 720px) {
+		nav {
+			flex-wrap: wrap;
+		}
+		h2 {
+			font-size: 1em;
+		}
+		.internal-links {
+			order: 3;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			gap: 1em;
+		}
+		nav a {
+			padding: 0.8em 0.4em;
+		}
 		.social-links {
 			display: none;
 		}
