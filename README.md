@@ -9,7 +9,7 @@ A **portfolio** template built with **Astro** and deployed to the **Cloudflare W
 - ✅ Project showcase with a category-filterable gallery
 - ✅ Dedicated page per project, with stack, demo and source links
 - ✅ Light/dark theme (follows the system, with a manual toggle and persistence) that survives view transitions
-- ✅ "Dev/SaaS minimalist" design: Inter + Space Grotesk type, ambient glow, subtle grid background, spotlight-on-hover cards and a blurred sticky header
+- ✅ "Aurora Glassmorphism" design: Outfit + Inter type, frosted-glass cards with backdrop blur, drifting aurora gradient blobs, a subtle grid background, spotlight-on-hover cards and a blurred sticky header
 - ✅ Smooth client-side navigation via Astro view transitions
 - ✅ SEO with canonical URLs, OpenGraph and sitemap
 - ✅ Markdown for the content
@@ -38,8 +38,7 @@ src/
 │   ├── HeaderLink.astro
 │   ├── ProjectCard.astro     # Project card in the gallery/home
 │   ├── TechBadge.astro       # Technology badge
-│   ├── ThemeToggle.astro     # Light/dark theme button
-│   └── FormattedDate.astro
+│   └── ThemeToggle.astro     # Light/dark theme button
 └── styles/
     └── global.css            # Global styles + design tokens for the light/dark themes
 ```
