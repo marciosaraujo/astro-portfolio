@@ -13,29 +13,49 @@
 
 <style>
 	#theme-toggle {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.4em;
+		width: 2.2em;
+		height: 2.2em;
+		padding: 0;
 		background: none;
 		border: none;
 		cursor: pointer;
 		color: rgb(var(--black));
 		border-radius: 8px;
 		line-height: 0;
+		transition: background-color 0.2s ease;
 	}
 	#theme-toggle:hover {
 		background: rgb(var(--gray-light));
 	}
-	/* Show the icon for the theme the click will switch to. */
+	#theme-toggle:active {
+		transform: scale(0.9);
+	}
+	/* Crossfade + rotate between icons instead of an instant display swap. */
+	#theme-toggle svg {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		transition: opacity 0.25s ease, transform 0.25s ease;
+	}
 	.icon-sun {
-		display: none;
+		opacity: 0;
+		transform: rotate(-90deg) scale(0.6);
+	}
+	.icon-moon {
+		opacity: 1;
+		transform: rotate(0deg) scale(1);
 	}
 	:global([data-theme='dark']) .icon-sun {
-		display: inline;
+		opacity: 1;
+		transform: rotate(0deg) scale(1);
 	}
 	:global([data-theme='dark']) .icon-moon {
-		display: none;
+		opacity: 0;
+		transform: rotate(90deg) scale(0.6);
 	}
 </style>
 

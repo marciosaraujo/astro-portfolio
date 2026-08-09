@@ -150,6 +150,12 @@ const highlight = featured.length ? featured : allProjects.slice(0, 3);
 				border-color: var(--border-hover);
 				background: rgba(var(--surface-rgb), 0.75);
 			}
+			/* After the :hover rules so a press mid-hover still shows the pressed state. */
+			.cta a:active,
+			.cta a.primary:active,
+			.cta a.secondary:active {
+				transform: scale(0.97);
+			}
 			section {
 				margin: 3.5em 0;
 			}

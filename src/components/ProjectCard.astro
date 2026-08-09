@@ -73,19 +73,23 @@ const { title, description, category, tech, coverImage } = project.data;
 	.card:hover {
 		transform: translateY(-5px);
 		border-color: var(--border-hover);
-		box-shadow: 
+		box-shadow:
 			0 20px 40px rgba(0, 0, 0, 0.3),
 			0 0 15px rgba(var(--accent-rgb), 0.12),
 			0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 	}
 	:root[data-theme="light"] .card:hover {
-		box-shadow: 
+		box-shadow:
 			0 16px 30px rgba(var(--accent-rgb), 0.08),
 			0 0 10px rgba(var(--accent-rgb), 0.04),
 			0 0 0 1px rgba(15, 23, 42, 0.02) inset;
 	}
 	.card:hover::before {
 		opacity: 1;
+	}
+	/* Comes after :hover so a press mid-hover still shows the pressed state. */
+	.card:active {
+		transform: scale(0.98);
 	}
 	.card > * {
 		position: relative;

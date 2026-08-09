@@ -122,6 +122,7 @@ body {
 	position: relative;
 	min-height: 100vh;
 	overflow-x: hidden;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Subtly aligned blueprint grid dots */
@@ -186,7 +187,7 @@ body::after {
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	box-shadow: var(--box-shadow);
-	transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+	transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-strong {
@@ -195,13 +196,14 @@ body::after {
 	-webkit-backdrop-filter: blur(24px) saturate(180%);
 	border: 1px solid rgba(var(--accent-rgb), 0.2);
 	border-radius: var(--radius-lg);
-	box-shadow: 
-		0 20px 50px rgba(0, 0, 0, 0.25), 
+	box-shadow:
+		0 20px 50px rgba(0, 0, 0, 0.25),
 		0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 :root[data-theme="light"] .glass-strong {
-	box-shadow: 
-		0 20px 40px rgba(15, 23, 42, 0.04), 
+	box-shadow:
+		0 20px 40px rgba(15, 23, 42, 0.04),
 		0 0 0 1px rgba(15, 23, 42, 0.01) inset;
 }
 
@@ -209,7 +211,8 @@ body::after {
 	background: rgba(var(--surface-rgb), 0.5);
 	backdrop-filter: blur(16px) saturate(180%);
 	-webkit-backdrop-filter: blur(16px) saturate(180%);
-	border-bottom: 1px solid var(--border);
+	border-bottom: 1px solid transparent;
+	transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ==============================================================
@@ -233,8 +236,14 @@ h6 {
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
 	line-height: 1.15;
-	letter-spacing: -0.02em;
 	font-weight: 700;
+}
+
+/* Negative tracking only pays off at large display sizes; smaller
+   headings (h3-h6) read tighter and less legible with it. */
+h1,
+h2 {
+	letter-spacing: -0.02em;
 }
 
 h1 {
@@ -306,6 +315,14 @@ textarea:focus, input:focus {
 	outline: none;
 	border-color: rgba(var(--accent-rgb), 0.5);
 	box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Branded keyboard focus ring, consistent with the accent used everywhere else. */
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--accent-dark);
+	outline-offset: 2px;
+	border-radius: 4px;
 }
 
 table {
@@ -413,6 +430,30 @@ hr {
 	* {
 		animation: none !important;
 		transition: none !important;
+	}
+}
+
+/* Users who ask for less transparency get solid surfaces instead of blur. */
+@media (prefers-reduced-transparency: reduce) {
+	.glass,
+	.glass-strong,
+	.glass-header,
+	.card,
+	pre {
+		backdrop-filter: none !important;
+		-webkit-backdrop-filter: none !important;
+		background: rgb(var(--surface-rgb)) !important;
+	}
+}
+
+/* Users who ask for more contrast get solid surfaces with a defined border. */
+@media (prefers-contrast: more) {
+	.glass,
+	.glass-strong,
+	.glass-header,
+	.card {
+		background: rgb(var(--surface-rgb));
+		border-color: rgb(var(--black));
 	}
 }
 

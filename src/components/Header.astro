@@ -35,6 +35,15 @@ import { SITE_TITLE, SOCIAL } from '../consts';
 		<ThemeToggle />
 	</nav>
 </header>
+<script>
+	// Fade in the header's bottom border only once content is scrolled
+	// under it, instead of a hard divider that's always there.
+	const updateScrolled = () => {
+		document.querySelector('header')?.classList.toggle('is-scrolled', window.scrollY > 4);
+	};
+	window.addEventListener('scroll', updateScrolled, { passive: true });
+	document.addEventListener('astro:page-load', updateScrolled);
+</script>
 <style>
 	header {
 		margin: 0;
@@ -42,6 +51,9 @@ import { SITE_TITLE, SOCIAL } from '../consts';
 		position: sticky;
 		top: 0;
 		z-index: 50;
+	}
+	header.is-scrolled {
+		border-bottom-color: var(--border);
 	}
 	h2 {
 		margin: 0;
@@ -77,10 +89,13 @@ import { SITE_TITLE, SOCIAL } from '../consts';
 		font-family: "Outfit", sans-serif;
 		font-size: 0.92rem;
 		font-weight: 500;
-		transition: color 0.2s ease, border-color 0.2s ease;
+		transition: color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 	}
 	nav a:hover {
 		color: rgb(var(--black));
+	}
+	nav a:active {
+		transform: scale(0.96);
 	}
 	nav a.active {
 		color: var(--accent-dark);
